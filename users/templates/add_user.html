@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Bootstrap CSS CDN (remote) -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+    integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
+    crossorigin="anonymous"
+  />
+  <title>Add User</title>
+</head>
+<body>
+  <div class="card container">
+    <div class="p-4">
+      <h3 class='text-center'>Add a New User</h3>
+      <form action="/add_user" method="POST">
+        <div class="form-group">
+          <label for="fname">First Name:</label>
+          <input class="form-control" type="text" name="fname">
+        </div>
+    
+        <div class="form-group">
+          <label for="lname">Last Name:</label>
+          <input class="form-control" type="text" name="lname">
+        </div> 
+        
+        <div class="form-group">
+          <label for="email" >Email:</label>
+          <input class="form-control" type="email" name="email">
+        </div>
+    
+        <input type="submit" class="btn btn-success" value="Add Friend">
+      </form>
+    </div>
+  </div>
+</body>
+</html>
