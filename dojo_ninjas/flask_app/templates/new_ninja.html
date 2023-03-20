@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
+    <title>Ninja Form</title>
+</head>
+<body>
+	<form action="/ninjas/new" method="post" class="p-3 col-4 mx-auto my-5 bg-dark text-light">
+		<h2 class="text-center text-primary">New ninja:</h2>
+		<div class="form-group">
+			<label for="fname">First Name:</label>
+			<input type="text" name="fname" id="fname" class="form-control">
+		</div>
+		<div class="form-group">
+			<label for="lname">Last Name:</label>
+			<input type="text" name="lname" id="lname" class="form-control">
+		</div>
+		<div class="form-group">
+			<label for="age">Age:</label>
+			<input type="number" name="age" id="age" class="form-control">
+		</div>
+		<div class="form-group">
+			<label for="dojo">Dojo:</label>
+			<select id="dojo" name="dojo_id" class="form-control">
+				<option selected value="">Choose...</option>
+				{% for dojo in dojos %}
+					<option value="{{dojo.id}}">{{dojo.name}}</option>
+				{% endfor %}
+			</select>
+			</div>
+
+			<input type="submit" value="Create" class="btn btn-primary btn-outline-dark">
+	</form>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
+    <title>Dojo Detail</title>
+</head>
+<body>
+  <a href="/" class="btn btn-info btn-outline-primary">Home</a>
+  <div class="d-flex justify-content-around flex-wrap p-5">
+    <h2 class="text-center text-primary">{{ cohort.name}} Ninjas</h2>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">First Name</th>
+          <th scope="col">Last Name</th>
+          <th scope="col">Age</th>
+          <th scope="col">Created At</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for ninja in cohort.ninjas %}
+        <tr>
+          <th scope="row">{{ loop.index }}</th>
+          <td>{{ ninja.first_name }}</td>
+          <td>{{ ninja.last_name }}</td>
+          <td>{{ ninja.age }}</td>
+          <td>{{ ninja.created_at.strftime("%B %d, %Y  at %H:%M:%S")}}</td>
+        </tr>
+      {% endfor %}
+      <tbody>
+    </table>
+  </div>
+</body>
+</html>
