@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
+  <title>Authors Detail</title>
+</head>
+<body>
+  <div class="d-flex justify-content-around flex-wrap p-5">
+    <div class="card col-5 bg-dark text-light">
+      <div class="card-body">
+        <h2 class="card-title text-primary">{{ favorites.first_name }} {{ favorites.last_name }} favorites</h2>
+        <table class="table text-light">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Title</th>
+              <th scope="col"># of pages</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for favorite in favorites.books %}
+              <tr>
+                <th scope="row">{{ loop.index }}</th>
+                <td>{{ favorite.title }}</td>
+                <td>{{ favorite.num_of_pages }}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+    <div class="card col-5 bg-dark text-light">
+      <form action="/favorites/authors/{{ favorites.id }}" method="post" class="m-1">
+        <h2 class="text-center text-primary">Add Author's Favorite</h2>
+        
+        <div class="form-group">
+          <label for="title">Book:</label>
+          <select class="custom-select" name="book_id">
+            <option selected>Choose...</option>
+            {% for book in all_books %}
+              <option value={{ book.id }}>{{ book.title}}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <input type="submit" value="Add" class="btn btn-primary btn-outline-dark">
+      </form>
+    </div>
+  </div>
+  <div class="d-flex justify-content-center"> <a href="/" class="btn btn-dark btn-outline-primary text-center mt-4">Go Home</a></div>
+</body>
+</html>

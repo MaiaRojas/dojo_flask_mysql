@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
+  <title>Book Detail</title>
+</head>
+<body>
+  <div class="d-flex justify-content-around flex-wrap p-5">
+    <div class="card col-3 bg-dark text-light">
+      <div class="card-body">
+        <h2 class="card-title text-primary">Title: {{ favorites.title }}</h2>
+        <div>
+          <h6 class="card-title text-primary">Favorited by:</h6>
+            {% for favorite in favorites.authors %}
+              <p>{{ favorite.first_name }} {{ favorite.last_name }}</p>
+            {% endfor %}
+        </div>
+      </div>
+    </div>
+    
+    <div class="card col-3 bg-dark text-light">
+      <form action="/favorites/books/{{ favorites.id }}" method="post" class="m-1">
+        <h2 class="text-center text-primary">Add Book's Favorite</h2>
+  
+        <div class="form-group">
+          <label for="title">Author:</label>
+          <select class="custom-select" name="author_id">
+            <option selected>Choose...</option>
+            {% for author in all_authors %}
+              <option value={{ author.id }}>{{ author.first_name }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <input type="submit" value="Add" class="btn btn-primary btn-outline-dark">
+      </form>
+    </div>
+  </div>
+  <div class="d-flex justify-content-center"> <a href="/" class="btn btn-dark btn-outline-primary text-center mt-4">Go Home</a></div>
+</body>
+</html>
